@@ -11,3 +11,8 @@
 .item.active {
     background: gold;
 }
+
+.item:hover {
+    background: black;
+    cursor: pointer;
+}
