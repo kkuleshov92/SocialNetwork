@@ -6,9 +6,11 @@
 .item a {
     color: #fff;
     text-decoration: none;
+    width: 100%;
+    display: block;
 }
 
-.item.active {
+.item a.active {
     background: gold;
 }
 

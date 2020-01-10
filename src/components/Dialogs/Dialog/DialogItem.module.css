@@ -1,0 +1,17 @@
+.dialog {
+    color: #fff;
+}
+
+.dialog a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.dialog a:hover {
+    color: green;
+}
+
+.dialog a.active {
+    font-size: 1.2em;
+    font-weight: 700;
+}
