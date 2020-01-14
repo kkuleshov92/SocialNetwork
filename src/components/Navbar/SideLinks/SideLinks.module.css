@@ -1,0 +1,17 @@
+
+
+.item a {
+    color: #fff;
+    text-decoration: none;
+    width: 100%;
+    display: block;
+}
+
+.item a.active {
+    background: gold;
+}
+
+.item:hover {
+    background: black;
+    cursor: pointer;
+}

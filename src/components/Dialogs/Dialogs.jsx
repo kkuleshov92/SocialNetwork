@@ -3,31 +3,36 @@ import classes from './Dialogs.module.css';
 import DialogItem from './Dialog/DialogItem';
 import Message from './Messages/Messages';
 
-let persons = [
-    {id: 1, name: 'Вася'},
-    {id: 2, name: 'Артур'},
-    {id: 3, name: 'Ричард'},
-    {id: 4, name: 'Эдуард'},
-    {id: 5, name: 'Иван'},
-    {id: 6, name: 'Дональд'},
-];
-
-let messages = [
-    {id: 1, text: 'Hi!'},
-    {id: 2, text: 'How are you?!'},
-    {id: 3, text: 'How is your holidays?'}
-]
-
-let personsElements = persons.map(element => {
-    return <DialogItem name={element.name} id={element.id} />
-});
-
-let messagesElements = messages.map(item => {
-    return <Message text={item.text} />
-});
 
 
-const Dialogs = () => {
+
+
+
+const Dialogs = (props) => {
+
+
+    let personsElements = props.state.persons.map(element => {
+        return <DialogItem name={element.name} id={element.id} imgName={element.imgName} />
+    });
+
+    let messagesElements = props.state.messages.map(item => {
+        return <Message text={item.text} />
+    });
+
+    let dialogArea = React.createRef(),
+        sendText = () => {
+            
+            props.addDialogText();
+        }
+
+    
+
+    let dialogChange = () => {
+        
+        let text = dialogArea.current.value;
+        props.updateNewDialogText(text)
+    }
+
     return (
         <div>
             <div className={classes.dialogs}>
@@ -35,8 +40,21 @@ const Dialogs = () => {
                     {personsElements}
                 </div>
 
-                <div className={classes.messages}>
-                    {messagesElements}
+                <div className={classes.textSide}>
+                    <div className={classes.messages}>
+                        {messagesElements}
+                    </div>
+
+                    <div className={classes.dialogArea}>
+                        <div>
+                            <textarea ref={dialogArea} value={props.state.newDialogText} onChange={dialogChange} />
+                        </div>
+                        <div>
+                            <button onClick={sendText}>
+                                Send
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

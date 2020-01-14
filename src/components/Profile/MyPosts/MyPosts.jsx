@@ -2,26 +2,35 @@ import React from 'react';
 import classes from './MyPosts.module.css'
 import Post from './Post/Post'
 
-let posts = [
-    {id: 1, message: 'Hello, how are you?', likesCount: 10},
-    {id: 2, message: 'It\'s my first post', likesCount: 7}
-]
 
-let postsElemets = posts.map(element => {
-    return <Post message={element.message} likes={element.likesCount} />
-});
 
-const MyPosts = () => {
+
+
+const MyPosts = (props) => {
+    let newPostElement = React.createRef(),
+        showPost = () => {
+
+            props.addPost();
+        }
+
+    let postsElemets = props.messages.posts.map(element => {
+        return <Post message={element.message} likes={element.likesCount} />
+    });
+
+    let changeInput = () => {
+        let text = newPostElement.current.value;
+
+        props.updateNewPostText(text)
+    }
+
     return (
         <div>
             My posts
         <div>
             <div>
-                <textarea>
-
-                </textarea>
+                <textarea ref={newPostElement} onChange={changeInput} value={props.messages.newPostText} />
                 <br/>
-                <button>
+                <button onClick={showPost}>
                     Add post
                 </button>
             </div>
