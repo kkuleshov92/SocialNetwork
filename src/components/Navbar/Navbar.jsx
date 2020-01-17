@@ -4,10 +4,11 @@ import SideLinks from './SideLinks/SideLinks'
 import FriendLinks from './FriendLinks/FriendLinks';
 
 const Navbar = (props) => {
+    
     return (
         <div className={classes.navbarBody}>
             <SideLinks />
-            <FriendLinks state={props.state.friends} />
+            <FriendLinks state={props.state} />
         </div>
     )
 }

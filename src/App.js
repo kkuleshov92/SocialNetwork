@@ -18,16 +18,12 @@ function App(props) {
     <BrowserRouter>
       <div className='app-wrapper'>
         <Header />
-        <Navbar state={props.state.navbar} />
+        <Navbar state={props.state} />
         <div className='app-wrapper-content'>
           <Route path='/dialogs' render={() => <Dialogs 
-          state={props.state.dialogs} 
-          updateNewDialogText={props.updateNewDialogText} 
-          addDialogText={props.addDialogText} />} />
+            state={props.state} /> } />
           <Route path='/profile' render={() => <Profile 
-          state={props.state.profile} 
-          addPost={props.addPost} 
-          updateNewPostText={props.updateNewPostText} />} />
+            state={props.state} />} />
           <Route path='/music' render={() => <Music />} />
           <Route path='/news' render={() => <News />} />
           <Route path='/settings' render={() => <Settings />} />

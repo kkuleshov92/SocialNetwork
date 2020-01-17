@@ -3,7 +3,8 @@ import classes from './FriendLinks.module.css';
 import FriendItem from './FriendItem/FriendItem';
 
 const FriendLinks = (props) => {
-    let friendList = props.state.map(element => {
+
+    let friendList = props.state.getState().navbar.friends.map(element => {
         return (
             <FriendItem friendName={element.name} imgName={element.imgName} />
         )
