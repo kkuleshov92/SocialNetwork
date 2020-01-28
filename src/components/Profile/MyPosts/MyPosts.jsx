@@ -7,20 +7,19 @@ import Post from './Post/Post'
 
 
 const MyPosts = (props) => {
-    
     let newPostElement = React.createRef(),
         showPost = () => {
 
-            props.state.addPost();
+            props.dispatch({type : 'ADD-POST'});
         }
 
-    let postsElemets = props.state.getState().profile.posts.map(element => {
+    let postsElemets = props.state.profile.posts.map(element => {
         return <Post message={element.message} likes={element.likesCount} />
     });
 
     let changeInput = () => {
         let text = newPostElement.current.value;
-        props.state.updateNewPostText(text)
+        props.dispatch({type : 'UPDATE-NEW-POST-TEXT', newText : text})
     }
 
     return (
@@ -28,7 +27,7 @@ const MyPosts = (props) => {
             My posts
         <div>
             <div>
-                <textarea ref={newPostElement} onChange={changeInput} value={props.state.getState().profile.newPostText} />
+                <textarea ref={newPostElement} onChange={changeInput} value={props.state.profile.newPostText} />
                 <br/>
                 <button onClick={showPost}>
                     Add post

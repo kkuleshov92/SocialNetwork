@@ -4,7 +4,7 @@ import FriendItem from './FriendItem/FriendItem';
 
 const FriendLinks = (props) => {
 
-    let friendList = props.state.getState().navbar.friends.map(element => {
+    let friendList = props.state.navbar.friends.map(element => {
         return (
             <FriendItem friendName={element.name} imgName={element.imgName} />
         )

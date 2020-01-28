@@ -1,4 +1,9 @@
 .navbarBody {
     grid-area: n;
-    background: burlywood;
+    background: #797979;
+    border: 3px solid #000;
+    border-radius: 10px;
+    padding-top: 10px;
+    margin: 2px;
+    padding: 3px;
 }

@@ -10,18 +10,18 @@ import Message from './Messages/Messages';
 
 const Dialogs = (props) => {
 
-    let personsElements = props.state.getState().dialogs.persons.map(element => {
+    let personsElements = props.state.dialogs.persons.map(element => {
         return <DialogItem name={element.name} id={element.id} imgName={element.imgName} />
     });
 
-    let messagesElements = props.state.getState().dialogs.messages.map(item => {
+    let messagesElements = props.state.dialogs.messages.map(item => {
         return <Message text={item.text} />
     });
 
     let dialogArea = React.createRef(),
         sendText = () => {
             
-            props.state.addDialogText();
+            props.dispatch({type : 'ADD-DIALOG-TEXT'});
         }
 
     
@@ -29,7 +29,7 @@ const Dialogs = (props) => {
     let dialogChange = () => {
         
         let text = dialogArea.current.value;
-        props.state.updateNewDialogText(text)
+        props.dispatch({type : 'UPDATE-NEW-DIALOG-TEXT', newText : text})
     }
 
     return (
@@ -46,7 +46,10 @@ const Dialogs = (props) => {
 
                     <div className={classes.dialogArea}>
                         <div>
-                            <textarea ref={dialogArea} value={props.state.getState().dialogs.newDialogText} onChange={dialogChange} />
+                            <textarea 
+                            ref={dialogArea} 
+                            value={props.state.dialogs.newDialogText} 
+                            onChange={dialogChange} />
                         </div>
                         <div>
                             <button onClick={sendText}>
